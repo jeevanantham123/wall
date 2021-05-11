@@ -39,6 +39,8 @@ module.exports = {
     width: (theme) => ({
       full: "full",
       auto: "auto",
+      "16p": "16%",
+      "84p": "84%",
       ...theme("spacing"),
       ...theme("negativeSpacing"),
     }),
