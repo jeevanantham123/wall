@@ -1,16 +1,13 @@
 import React from "react";
-import { useSession } from "next-auth/client";
+import Pagelayout from "../components/PageLayout.js";
 
 function addPost() {
-  const [session] = useSession();
   return (
-    <div>
-      {session && (
-        <div>
-          <button>Add new Post</button>
-        </div>
-      )}
-    </div>
+    <Pagelayout>
+      <div>
+        <button>Add new Post</button>
+      </div>
+    </Pagelayout>
   );
 }
 

@@ -6,27 +6,32 @@ import { useEffect } from "react";
 
 function Pagelayout(props) {
   const [session, loading] = useSession();
-  const [signout, setSignout] = useState(false);
+  const [display, setdisplay] = useState(false);
   useEffect(() => {
-    setTimeout(() => {
-      if (!session && !signOut && !loading) {
+    if (!loading) {
+      if (session === null) {
         Router.push("/");
-      } else if (!session && signOut) {
-        Router.push("/");
+      } else if (session) {
+        setdisplay(true);
       }
-    }, 1000);
-  }, [signout]);
+    }
+  });
   const signOutClicked = () => {
     signOut();
-    setSignout(true);
   };
   return (
-    <div className="w-full flex min-h-screen">
-      <div className="hidden md:block w-16p">
-        <Sidebar signOut={signOutClicked} />
-      </div>
-      <div className="w-84p">{props.children}</div>
-    </div>
+    <>
+      {display ? (
+        <div className="w-full flex min-h-screen">
+          <div div className="hidden md:block w-16p">
+            <Sidebar signOut={signOutClicked} />
+          </div>
+          <div className="w-84p">{props.children}</div>
+        </div>
+      ) : (
+        <h1>Loading...</h1>
+      )}
+    </>
   );
 }
 

@@ -1,7 +1,12 @@
 import React from "react";
+import Pagelayout from "../components/PageLayout.js";
 
 function Account() {
-  return <div>Welcome to account page!</div>;
+  return (
+    <Pagelayout>
+      <div>Welcome to account page!</div>
+    </Pagelayout>
+  );
 }
 
 export default Account;
