@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@prisma/client": "^2.22.1",
+    "@prisma/client": "^2.23.0",
     "classnames": "^2.2.6",
     "next": "10.2.0",
     "next-auth": "^3.20.1",
@@ -20,7 +20,7 @@
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.14",
-    "prisma": "^2.22.1",
+    "prisma": "^2.23.0",
     "tailwindcss": "^2.1.2"
   }
 }
