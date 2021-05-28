@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Sidebar from "../Sidebar.js";
 import Router from "next/router";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Pagelayout(props) {
   const [session, loading] = useSession();
@@ -22,11 +24,22 @@ function Pagelayout(props) {
   return (
     <>
       {display ? (
-        <div className="w-full flex min-h-screen">
+        <div className="w-full min-w-full flex min-h-screen">
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <div div className="hidden md:block w-16p">
             <Sidebar signOut={signOutClicked} />
           </div>
-          <div className="w-84p">{props.children}</div>
+          <div className="w-full md:w-84p">{props.children}</div>
         </div>
       ) : (
         <h1>Loading...</h1>
