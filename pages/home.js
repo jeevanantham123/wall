@@ -22,7 +22,7 @@ function Home({ data }) {
   );
 }
 export async function getStaticProps(context) {
-  const res = await axios.get(`http://localhost:3000/api/post/getPost`);
+  const res = await axios.get(`/api/post/getPost`);
   const data = await res.data;
 
   if (!data) {
