@@ -1,5 +1,5 @@
 import React from "react";
-import Pagelayout from "../components/PageLayout.js";
+import Pagelayout from "../components/PageLayout";
 
 function Account() {
   return (

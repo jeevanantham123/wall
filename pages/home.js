@@ -1,6 +1,6 @@
 import React from "react";
 import { useSession } from "next-auth/client";
-import Pagelayout from "../components/PageLayout.js";
+import Pagelayout from "../components/PageLayout";
 
 function Home() {
   const [session, loading] = useSession();

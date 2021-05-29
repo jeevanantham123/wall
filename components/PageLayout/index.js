@@ -1,6 +1,6 @@
 import { useSession, signOut } from "next-auth/client";
 import React, { useState } from "react";
-import Sidebar from "../Sidebar.js";
+import Sidebar from "../Sidebar";
 import Router from "next/router";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
