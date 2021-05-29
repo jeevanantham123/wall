@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import classnames from "classnames";
-import { signOut } from "next-auth/client";
+import { signIn } from "next-auth/client";
 
 function Sidebar(props) {
   const routesArr = [
@@ -10,16 +10,6 @@ function Sidebar(props) {
       id: 0,
       link: "/home",
       content: "Home",
-    },
-    {
-      id: 1,
-      link: "/addPost",
-      content: "Add Post",
-    },
-    {
-      id: 2,
-      link: "/account",
-      content: "Account",
     },
   ];
   const router = useRouter();
@@ -44,11 +34,10 @@ function Sidebar(props) {
             className="border-2 rounded-md bg-red-500 focus:outline-none border-black flex justify-center items-center h-40 w-200"
             onClick={(e) => {
               e.preventDefault();
-              signOut();
-              router.push("/home");
+              signIn();
             }}
           >
-            Log out
+            Log In
           </button>
         </div>
       </div>

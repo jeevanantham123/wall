@@ -12,7 +12,9 @@ export default function SignIn({ providers }) {
             className="border-2 rounded-md p-10 focus:outline-none border-black flex justify-between items-center"
             onClick={() =>
               signIn(provider.id, {
-                callbackUrl: router.query.callbackUrl + "home",
+                callbackUrl: router.query.callbackUrl.includes("home")
+                  ? router.query.callbackUrl
+                  : router.query.callbackUrl + "home",
               })
             }
           >

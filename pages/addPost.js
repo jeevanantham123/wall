@@ -34,9 +34,9 @@ function addPost() {
 
   return (
     <Pagelayout>
-      <div className="flex w-full min-h-screen flex-col items-center">
+      <div className="flex w-full flex-col items-center">
         <h1 className="text-2xl mt-10">Add new Post</h1>
-        <div className="relative border shadow flex flex-col min-h-80vh md:min-h-90vh m-auto w-full md:w-60p py-40 min-w-full md:min-w-60p items-center">
+        <div className="relative border shadow flex flex-col h-full mb-20 m-auto w-full md:w-60p py-40 min-w-full md:min-w-60p items-center">
           <div className="flex flex-wrap gap-12 w-full items-center justify-center">
             <label>Title</label>
             <input
