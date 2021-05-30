@@ -1,10 +1,12 @@
 import React from "react";
 import { useSession } from "next-auth/client";
 import Pagelayout from "../components/PageLayout";
-import axios from "axios";
+// import axios from "axios";
 import PostCard from "../components/PostCard";
+import prisma from "../lib/prisma";
 
-function Home({ data }) {
+function Home(props) {
+  const data = props.data;
   const [session, loading] = useSession();
   return (
     <Pagelayout>
@@ -22,9 +24,12 @@ function Home({ data }) {
   );
 }
 export async function getStaticProps(context) {
-  const res = await axios.get(`/api/post/getPost`);
-  const data = await res.data;
+  // const response = await axios.get(`http://localhost:3000/api/post/getPost`);
+  // const data = await response.data;
+  // console.log(response);
 
+  const res = await prisma.post.findMany();
+  const data = JSON.parse(JSON.stringify(res));
   if (!data) {
     return {
       notFound: true,
