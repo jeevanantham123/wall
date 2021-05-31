@@ -2,29 +2,28 @@ import React from "react";
 import { useState } from "react";
 import Pagelayout from "../components/PageLayout";
 import { toast } from "react-toastify";
-import axios from "axios";
 import is_url from "../lib/validator.js";
 import ReactTinyLink from "../components/ReactLink";
+import { addPostAPI } from "../services/post";
 
 function addPost() {
-  const [title, settitle] = useState(null);
-  const [link, setLink] = useState(null);
+  const [title, settitle] = useState("");
+  const [link, setLink] = useState("");
   const [tag, setTag] = useState();
   const [tagList, setTagList] = useState([]);
   const [preview, setPreview] = useState(true);
+
   const addPost = async () => {
     const body = { title, link, tagList };
-    // console.log(body);
-    await axios
-      .post("/api/post", {
-        body,
-      })
+    addPostAPI(body)
       .then((response) => {
-        toast.success("Success");
-        setLink("");
-        settitle("");
-        setTag("");
-        setTagList([]);
+        if (response.status === "Success") {
+          toast.success("Success");
+          setLink("");
+          settitle("");
+          setTag("");
+          setTagList([]);
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -66,9 +65,7 @@ function addPost() {
                 maxLine={2}
                 minLine={1}
                 url={link}
-                // proxyUrl={"https://cors-anywhere.herokuapp.com/corsdemo"}
                 onError={() => {
-                  // toast.error("Unable to Preview!");
                   setPreview(false);
                 }}
               />
@@ -104,7 +101,8 @@ function addPost() {
             </div>
           ) : null}
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               if (title?.length && link?.length && tagList?.length) addPost();
               else {
                 if (!is_url(link?.trim())) toast.error("Enter a link!");

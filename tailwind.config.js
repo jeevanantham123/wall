@@ -98,6 +98,7 @@ module.exports = {
     inset: () => ({
       0: "0px",
       20: "20px",
+      50: "50px",
       300: "300px",
     }),
     padding: (theme) => ({

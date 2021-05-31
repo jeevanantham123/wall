@@ -44,8 +44,8 @@ function Sidebar(props) {
             className="border-2 rounded-md bg-red-500 focus:outline-none border-black flex justify-center items-center h-40 w-200"
             onClick={(e) => {
               e.preventDefault();
-              signOut();
               router.push("/home");
+              signOut();
             }}
           >
             Log out
