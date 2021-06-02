@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/client";
 import Pagelayout from "../components/PageLayout";
 import PostCard from "../components/PostCard";
-import { getPost } from "../services/post";
+import { getPostbyId } from "../services/post";
 
 export default function Home() {
   const [session, loading] = useSession();
   const [data, setData] = useState();
   const [fetching, setFetching] = useState(true);
+
   useEffect(async () => {
-    await getPost()
+    await getPostbyId()
       .then((data) => {
         // console.log(data);
         setData(data);
@@ -19,6 +20,18 @@ export default function Home() {
         setFetching(false);
       });
   }, []);
+
+  const dataChangeAPI = async () => {
+    await getPostbyId()
+      .then((data) => {
+        // console.log(data);
+        setData(data);
+        setFetching(false);
+      })
+      .catch((err) => {
+        setFetching(false);
+      });
+  };
 
   return (
     <Pagelayout>
@@ -31,7 +44,13 @@ export default function Home() {
           <h2>Loading...</h2>
         ) : null}
         {fetching && <h3>Loading Data...</h3>}
-        <PostCard posts={data} />
+        <PostCard
+          posts={data}
+          user={true}
+          handleChange={() => {
+            dataChangeAPI();
+          }}
+        />
       </div>
     </Pagelayout>
   );

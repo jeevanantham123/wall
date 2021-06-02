@@ -49,6 +49,7 @@ module.exports = {
     height: (theme) => ({
       auto: "auto",
       full: "100%",
+      "80vh": "80vh",
       ...theme("spacing"),
       ...theme("negativeSpacing"),
     }),
@@ -74,6 +75,7 @@ module.exports = {
       "20p": "20%",
       "80p": "80%",
       "60p": "60%",
+      240: "240px",
       300: "300px",
       500: "500px",
       ...theme("spacing"),
@@ -113,7 +115,9 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity: ["disabled"],
+    },
   },
   plugins: [],
 };

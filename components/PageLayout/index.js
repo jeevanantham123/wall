@@ -41,7 +41,7 @@ function Pagelayout(props) {
             <Image src={close} alt="menu" width="20px" height="20px" />
           )}
         </div>
-        <h1 className="text-2xl text-white font-extrabold">WALL</h1>
+        <h1 className="text-2xl text-white font-bold">WALL</h1>
       </div>
       <ToastContainer
         position="top-right"
@@ -55,13 +55,13 @@ function Pagelayout(props) {
         pauseOnHover
       />
       <div className="flex w-full border-l border-r shadow-xl">
-        <div className="md:w-300 md:min-w-300 hidden xl:block bg-blue-900">
-          <div div className="hidden xl:flex fixed top-50 h-full">
+        <div className="md:w-300 md:min-w-300 hidden md:block bg-blue-900">
+          <div div className="hidden md:flex fixed top-50 h-full">
             {display ? <Sidebar /> : <GuestSidebar />}
           </div>
         </div>
         {mobileMenu ? (
-          <div className={classnames("absolute w-300 inset-0 top-50 z-999")}>
+          <div className={classnames("fixed w-240 inset-0 top-50 z-999")}>
             <Sidebar />
           </div>
         ) : null}

@@ -18,9 +18,14 @@ function Sidebar(props) {
     },
     {
       id: 2,
-      link: "/account",
-      content: "Account",
+      link: "/yourPost",
+      content: "Posts",
     },
+    // {
+    //   id: 3,
+    //   link: "/account",
+    //   content: "Account",
+    // },
   ];
   const router = useRouter();
   return (
@@ -28,7 +33,7 @@ function Sidebar(props) {
       {routesArr.map((route) => {
         return (
           <div
-            className={classnames("my-10 mx-4 p-4", {
+            className={classnames("my-10 font-medium mx-4 p-4", {
               border: router.pathname.includes(route.link),
             })}
             key={route.id}

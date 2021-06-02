@@ -10,6 +10,7 @@
   "dependencies": {
     "@prisma/client": "^2.23.0",
     "axios": "^0.21.1",
+    "body-scroll-lock": "^3.1.5",
     "classnames": "^2.2.6",
     "next": "10.2.0",
     "next-auth": "^3.23.3",

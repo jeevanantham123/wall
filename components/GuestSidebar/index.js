@@ -18,7 +18,7 @@ function Sidebar(props) {
       {routesArr.map((route) => {
         return (
           <div
-            className={classnames("my-10 mx-4 p-4", {
+            className={classnames("my-10 font-medium mx-4 p-4", {
               border: router.pathname.includes(route.link),
             })}
             key={route.id}

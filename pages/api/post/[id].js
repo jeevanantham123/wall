@@ -28,5 +28,5 @@ async function handleDELETE(postId, res) {
   const post = await prisma.post.delete({
     where: { id: Number(postId) },
   });
-  res.json(post);
+  res.json({ status: "Success" });
 }
