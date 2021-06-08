@@ -2,22 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/client";
 import Pagelayout from "../components/PageLayout";
 import PostCard from "../components/PostCard";
-import { getPost } from "../services/post";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPostsSaga } from "../store/post/saga";
 
 export default function Home() {
   const [session, loading] = useSession();
-  const [data, setData] = useState();
-  const [fetching, setFetching] = useState(true);
-  useEffect(async () => {
-    await getPost()
-      .then((data) => {
-        // console.log(data);
-        setData(data);
-        setFetching(false);
-      })
-      .catch((err) => {
-        setFetching(false);
-      });
+  const { fetching, data } = useSelector((state) => state.post);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPostsSaga());
   }, []);
 
   return (
