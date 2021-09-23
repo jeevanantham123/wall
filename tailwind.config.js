@@ -6,6 +6,14 @@ const generateSpacings = (limit) => {
   return items;
 };
 
+const fontSizeArr = () => {
+  const items = {};
+  for (let i = 1; i <= 50; i += 1) {
+    items[i.toString()] = `${i}px`;
+  }
+  return items;
+};
+
 // // Command to get widths greater than 200 & copy them to clipboard
 // // rg "\W(([whxy]|m[tblrxy]?|p[tblrxy]?)-\d\d\d\d?)" -Io | rg "\d+" -Io | sort | uniq | awk '{if($1>200)print$1}' | sed '$!s/$/,/' | pbcopy
 
@@ -32,18 +40,23 @@ module.exports = {
       lg: "1024px",
       xl: "1280px",
     },
+    extend: {
+      colors: {
+        theme: "#1632C5",
+      },
+    },
     container: {
       screens: {
         sm: "100%",
-        md: "1366px",
-        lg: "1366px",
-        xl: "1366px",
+        md: "1440px",
+        lg: "1440px",
+        xl: "1440px",
       },
       padding: {
         default: "16px",
-        md: "139px",
-        lg: "139px",
-        xl: "139px",
+        md: "0px",
+        lg: "0px",
+        xl: "0px",
       },
     },
     height: (theme) => ({
@@ -101,18 +114,24 @@ module.exports = {
       0: "0px",
       20: "20px",
       50: "50px",
+      80: "80px",
       300: "300px",
     }),
+    borderRadius: {
+      5: "5px",
+    },
     padding: (theme) => ({
       auto: "auto",
       ...theme("spacing"),
       ...theme("negativeSpacing"),
     }),
+    fontSize: {
+      ...fontSizeArr(),
+    },
     zIndex: {
       50: "50",
       999: "999",
     },
-    extend: {},
   },
   variants: {
     extend: {

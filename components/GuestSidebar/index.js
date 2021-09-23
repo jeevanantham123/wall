@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import classnames from "classnames";
-import { signIn } from "next-auth/client";
+// import { signIn } from "next-auth/client";
 
 function Sidebar(props) {
   const routesArr = [
@@ -28,7 +28,7 @@ function Sidebar(props) {
         );
       })}
 
-      <div className="p-2">
+      {/* <div className="p-2">
         <div className="text-white font-extrabold text-lg">
           <button
             className="border-2 rounded-md bg-red-500 focus:outline-none border-black flex justify-center items-center h-40 w-200"
@@ -40,7 +40,7 @@ function Sidebar(props) {
             Log In
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

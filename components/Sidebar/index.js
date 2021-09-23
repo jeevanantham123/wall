@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import classnames from "classnames";
-import { signOut } from "next-auth/client";
+// import { signOut } from "next-auth/client";
 
 function Sidebar(props) {
   const routesArr = [
@@ -29,7 +29,7 @@ function Sidebar(props) {
   ];
   const router = useRouter();
   return (
-    <div className="items-stretch h-full bg-blue-900 flex flex-col text-white font-bold cursor-pointer">
+    <div className="items-stretch h-full flex flex-col text-white font-bold cursor-pointer">
       {routesArr.map((route) => {
         return (
           <div
@@ -43,7 +43,7 @@ function Sidebar(props) {
         );
       })}
 
-      <div className="p-2">
+      {/* <div className="p-2">
         <div className="text-white font-extrabold text-lg">
           <button
             className="border-2 rounded-md bg-red-500 focus:outline-none border-black flex justify-center items-center h-40 w-200"
@@ -56,7 +56,7 @@ function Sidebar(props) {
             Log out
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
