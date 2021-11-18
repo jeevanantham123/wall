@@ -27,6 +27,15 @@ export default async function handle(req, res) {
           name: true,
         },
       },
+      image: true,
+      image: {
+        select: {
+          id: true,
+          version: true,
+          publicId: true,
+          format: true,
+        },
+      },
     },
   });
   res.json(result);

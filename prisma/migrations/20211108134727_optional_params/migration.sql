@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Image" ALTER COLUMN "postId" DROP NOT NULL;

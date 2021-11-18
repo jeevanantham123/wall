@@ -5,7 +5,7 @@ import prisma from "../../../lib/prisma";
 // Required fields in body: title
 // Optional fields in body: content
 export default async function handle(req, res) {
-  const { title, link, tagList } = req.body.data;
+  const { title, link, tagList, imageId } = req.body.data;
   const session = await getSession({ req });
   const result = await prisma.post.create({
     data: {
@@ -13,6 +13,7 @@ export default async function handle(req, res) {
       link: link,
       tags: tagList,
       author: { connect: { name: session?.user?.name } },
+      image: { connect: { id: imageId } },
     },
   });
   res.json(result);

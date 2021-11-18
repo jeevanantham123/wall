@@ -10,7 +10,6 @@ import { deletePostbyId } from "../../services/post";
 
 function PostCard(props) {
   const posts = props.posts;
-
   const deltePostApiCall = async (id) => {
     deletePostbyId(id)
       .then((response) => {
@@ -104,16 +103,25 @@ function PostCard(props) {
                     ) : null}
                   </div>
                   <div className="text-lg font-medium">{post?.title}</div>
-                  <div className="flex mt-20 min-w-full w-full justify-center">
+                  <div className="mt-20 min-w-full w-full hidden justify-center">
                     <ReactTinyLink
                       cardSize="small"
                       showGraphic={true}
                       maxLine={2}
                       minLine={1}
-                      defaultMedia={false}
+                      defaultMedia={true}
                       url={post?.link}
                     />
                   </div>
+                  {post?.image?.id ? (
+                    <div className="mx-auto border p-10 mt-10">
+                      <img
+                        src={`https://res.cloudinary.com/${process.env.CLOUD_NAME}/v${post?.image?.version}/${post?.image?.publicId}.${post?.image?.format}`}
+                        key={post?.image?.id}
+                      />
+                    </div>
+                  ) : null}
+
                   <div className="flex gap-10">
                     {post?.tags?.length
                       ? post.tags.map((tag) => {

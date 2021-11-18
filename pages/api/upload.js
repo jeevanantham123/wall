@@ -19,7 +19,12 @@ export default async function handle(req, res) {
       format: imageData.format,
       version: imageData.version.toString(),
     },
+    select: {
+      id: true,
+      version: true,
+      publicId: true,
+      format: true,
+    },
   });
-
   res.json(result);
 }

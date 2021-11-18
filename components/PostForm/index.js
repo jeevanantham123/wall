@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import is_url from "../../lib/validator";
 import ReactTinyLink from "../ReactLink";
 import { addPostAPI, updatePostAPI } from "../../services/post";
 import { useState } from "react";
+import Upload from "../Upload";
 
 function PostForm(props) {
   const post = props?.post;
@@ -15,9 +16,11 @@ function PostForm(props) {
   const [tagList, setTagList] = useState(post?.tags ? post.tags : []);
   const [preview, setPreview] = useState(true);
   const [disabled, setdisabled] = useState(false);
+  const [uploadData, setuploadData] = useState();
 
   const addPostApiCall = async () => {
-    const body = { title, link, tagList };
+    const imageId = uploadData?.id;
+    const body = { title, link, tagList, imageId };
     addPostAPI(body)
       .then((response) => {
         if (response.status === "Success") {
@@ -26,6 +29,7 @@ function PostForm(props) {
           settitle("");
           setTag("");
           setTagList([]);
+          setuploadData("");
         }
         setdisabled(false);
       })
@@ -130,7 +134,7 @@ function PostForm(props) {
           clear Tags
         </button>
       ) : null}
-
+      <Upload setuploadData={setuploadData} uploadData={uploadData} />
       <button
         onClick={(e) => {
           e.preventDefault();
